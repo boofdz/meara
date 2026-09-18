@@ -1,4 +1,4 @@
-:root { --bg: #faf9f7; --ink: #1b1a18; --ink-soft: #6b6862; --rule: #e6e3dd; }
+:root { --bg: #faf9f7; --ink: #1b1a18; --ink-soft: #6b6862; --rule: #e6e3dd; --gap: 18px; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
@@ -20,10 +20,19 @@ a:hover { color: var(--ink-soft); }
 .eyebrow { margin: 0; font-size: 13px; letter-spacing: .2em; text-transform: lowercase; color: var(--ink-soft); }
 
 .gallery-wrap { padding: 0 40px 90px; }
-.gallery { columns: 3 300px; column-gap: 18px; }
+
+/* Masonry columns are real elements (built in gallery.js), laid out as a flex
+   row anchored to flex-start. Every column therefore starts on the exact same
+   top edge, which CSS multi-column balancing could not guarantee while the
+   lazy-loaded images were still resolving their heights. */
+.gallery { display: flex; align-items: flex-start; gap: var(--gap); }
+.gallery-col {
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--gap);
+}
 .gallery button {
-  display: block; width: 100%; margin: 0 0 18px; padding: 0; border: 0;
-  background: #f0eee9; cursor: zoom-in; break-inside: avoid; line-height: 0; overflow: hidden;
+  display: block; width: 100%; margin: 0; padding: 0; border: 0;
+  background: #f0eee9; cursor: zoom-in; line-height: 0; overflow: hidden;
 }
 .gallery button:hover { opacity: .86; }
 .gallery img { display: block; width: 100%; height: auto; }
@@ -60,5 +69,4 @@ a:hover { color: var(--ink-soft); }
 
 @media (max-width: 600px) {
   .site-head, .gallery-wrap { padding-left: 20px; padding-right: 20px; }
-  .gallery { columns: 1; }
 }
