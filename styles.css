@@ -1,0 +1,64 @@
+:root { --bg: #faf9f7; --ink: #1b1a18; --ink-soft: #6b6862; --rule: #e6e3dd; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Jost, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+a { color: var(--ink); text-decoration: none; }
+a:hover { color: var(--ink-soft); }
+
+.site-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 32px; padding: 34px 40px 26px; flex-wrap: wrap;
+}
+.wordmark { font-size: 22px; letter-spacing: .34em; text-transform: lowercase; font-weight: 400; }
+.eyebrow { margin: 0; font-size: 13px; letter-spacing: .2em; text-transform: lowercase; color: var(--ink-soft); }
+
+.gallery-wrap { padding: 0 40px 90px; }
+.gallery { columns: 3 300px; column-gap: 18px; }
+.gallery button {
+  display: block; width: 100%; margin: 0 0 18px; padding: 0; border: 0;
+  background: #f0eee9; cursor: zoom-in; break-inside: avoid; line-height: 0; overflow: hidden;
+}
+.gallery button:hover { opacity: .86; }
+.gallery img { display: block; width: 100%; height: auto; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 50; background: rgba(20,19,17,.93);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn .18s ease-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox-inner {
+  width: 90%; max-height: 88vh;
+  display: flex; flex-direction: column; gap: 14px; align-items: center;
+  animation: rise .22s ease-out;
+}
+.lightbox-inner img {
+  display: block; max-width: 100%; max-height: 80vh; width: auto; height: auto;
+  object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.lightbox-bar {
+  display: flex; align-items: center; gap: 20px;
+  color: #f2f0ec; font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+}
+.lightbox-bar span { opacity: .6; font-variant-numeric: tabular-nums; }
+.lightbox button {
+  border: 0; background: none; color: #f2f0ec; cursor: pointer;
+  font-family: inherit; font-size: 12px; letter-spacing: .2em; padding: 6px 2px; font-weight: 300;
+}
+.lightbox button:hover { color: #a9a49b; }
+.lightbox-close { position: absolute; top: 22px; right: 26px; font-size: 26px !important; line-height: 1; padding: 8px 12px !important; }
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes rise { from { opacity: 0; transform: scale(.985) } to { opacity: 1; transform: scale(1) } }
+
+@media (max-width: 600px) {
+  .site-head, .gallery-wrap { padding-left: 20px; padding-right: 20px; }
+  .gallery { columns: 1; }
+}
