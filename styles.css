@@ -26,13 +26,6 @@ a:hover { color: var(--ink-soft); }
   color: var(--ink-soft); font-weight: 500;
   font-family: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-/* Envelope sits inline so the <p> keeps a text baseline for .site-head's
-   baseline alignment. currentColor keeps it the same grey as the address. */
-.mail-icon {
-  width: 1em; height: 1em; margin-right: .35em; vertical-align: -.14em;
-  fill: none; stroke: currentColor; stroke-width: 1.4;
-  stroke-linecap: round; stroke-linejoin: round;
-}
 
 .gallery-wrap { padding: 0 40px 90px; }
 
