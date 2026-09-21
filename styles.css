@@ -17,7 +17,22 @@ a:hover { color: var(--ink-soft); }
   gap: 32px; padding: 34px 40px 26px; flex-wrap: wrap;
 }
 .wordmark { font-size: 22px; letter-spacing: .34em; text-transform: lowercase; font-weight: 400; }
-.eyebrow { margin: 0; font-size: 13px; letter-spacing: .2em; text-transform: lowercase; color: var(--ink-soft); }
+/* DM Mono for the address: it draws a true slashed zero by default, so the
+   three 0s in meara000 can't be misread as letter o. Jost has no slashed-zero
+   feature at all, and Plex/Space/JetBrains/Source Code Pro only dot theirs.
+   Mono is already wide, so the tracking comes down from .2em. */
+.eyebrow {
+  margin: 0; font-size: 13px; letter-spacing: .1em; text-transform: lowercase;
+  color: var(--ink-soft); font-weight: 500;
+  font-family: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+/* Envelope sits inline so the <p> keeps a text baseline for .site-head's
+   baseline alignment. currentColor keeps it the same grey as the address. */
+.mail-icon {
+  width: 1em; height: 1em; margin-right: .35em; vertical-align: -.14em;
+  fill: none; stroke: currentColor; stroke-width: 1.4;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 
 .gallery-wrap { padding: 0 40px 90px; }
 
